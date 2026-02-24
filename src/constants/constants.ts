@@ -97,7 +97,7 @@ export const projects=[
     role:"Full Stack",
     date:"2025",
     category:"Socket",
-    link:"https://www.google.com",
+    link:"https://github.com/mychoise/chat-app",
     color:"#FEB685",
     image:"/small/1.avif"
   },
@@ -106,7 +106,7 @@ export const projects=[
     role:"Frontend Developer",
     date:"2025",
     category:"Recreation",
-    link:"",
+    link:"https://github.com/mychoise/k72",
     color:"#B4A2F8",
     image:"/small/2.avif"
   },
@@ -115,7 +115,7 @@ export const projects=[
     role:"Full Stack",
     date:"2025",
     category:"AI",
-    link:"",
+    link:"https://github.com/mychoise/Ai-Saas",
     color:"#87F4CD",
     image:"/small/3.avif"
   },
@@ -124,7 +124,7 @@ export const projects=[
     role:"Full Stack",
     date:"2025",
     category:"Blog",
-    link:"",
+    link:"https://github.com/mychoise/Blog-app",
     color:"#8DA9C4",
     image:"/small/4.avif"
   },
