@@ -64,13 +64,13 @@ link:"tel:+9779863798085"
   name:"LinkedIn",
   icon:Globe,
   value:"LinkedIn",
-  link:"https://linkedin.com"
+  link:"https://www.linkedin.com/in/sabin-dhakal-a10518300/"
 },
 {
   name:"GitHub",
   icon:Globe,
   value:"GitHub",
-  link:"https://github.com"
+  link:"https://github.com/mychoise/"
 }
 
 ]
