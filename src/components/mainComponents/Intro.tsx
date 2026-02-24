@@ -1,5 +1,3 @@
-import React from "react";
-
 const Intro = () => {
   return (
     <div className="w-full max-w-[500px]">

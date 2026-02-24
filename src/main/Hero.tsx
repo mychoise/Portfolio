@@ -1,20 +1,22 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import Intro from "../components/mainComponents/Intro";
 import Projects from "../components/mainComponents/Projects";
 import Experience from "../components/mainComponents/Experience";
 import Education from "../components/mainComponents/Education";
 import Contacts from "../components/mainComponents/Contacts";
 import Cursor from "../components/Cursor";
-import Fotter from "../components/Fotter";
 
 // Variants for Framer Motion
-const slideFromRight = {
+const slideFromRight: Variants = {
   hidden: { opacity: 0, x: 100 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
 };
 
-const fadeInOnScroll = {
+const fadeInOnScroll: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
@@ -23,21 +25,11 @@ const fadeInOnScroll = {
   },
 };
 
-const springAnimation = {
-  hidden: { opacity: 0, scale: 0.5 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { type: "spring", stiffness: 120, damping: 15 },
-  },
-};
-
 const Hero = () => {
   return (
     <div className="pt-10 lg:pt-10 hero-area pl-0 lg:pl-44 px-6 lg:px-0 flex flex-col gap-10 cursor-none">
       <Cursor />
 
-      {/* Intro - simple fade */}
       <motion.div
         id="intro"
         initial={{ opacity: 0 }}
@@ -47,7 +39,6 @@ const Hero = () => {
         <Intro />
       </motion.div>
 
-      {/* Projects slide in from right */}
       <motion.div
         id="projects"
         initial="hidden"
@@ -58,7 +49,6 @@ const Hero = () => {
         <Projects />
       </motion.div>
 
-      {/* Experience - fade in on scroll */}
       <motion.div
         id="experience"
         initial="hidden"
@@ -69,7 +59,6 @@ const Hero = () => {
         <Experience />
       </motion.div>
 
-      {/* Education - fade in on scroll */}
       <motion.div
         id="education"
         initial="hidden"
@@ -80,7 +69,6 @@ const Hero = () => {
         <Education />
       </motion.div>
 
-      {/* Contacts - fade in on scroll */}
       <motion.div
         id="contact"
         initial="hidden"

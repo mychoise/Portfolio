@@ -1,7 +1,6 @@
 import { Calendar, Folder, User } from "lucide-react";
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { projects } from "../../constants/constants";
-import { Link } from "react-router-dom";
 
 const Projects = () => {
   const [index, setIndex] = useState(0);
@@ -88,6 +87,7 @@ const Projects = () => {
         {(showAllProjects ? projects : projects.slice(0, 2)).map(
           (project, i) => (
             <a
+              key={i}
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
@@ -113,7 +113,7 @@ const Projects = () => {
       {/* DESKTOP SLIDER */}
       <div
         ref={containerRef}
-        className="hidden lg:block relative mt-6 overflow-hidden w-full max-w-[620px]"
+        className="hidden lg:block relative mt-6 cursor-none overflow-hidden w-full max-w-[620px]"
       >
         <div
           className="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
@@ -121,10 +121,11 @@ const Projects = () => {
         >
           {projects.map((project, i) => (
             <a
+              key={i}
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="block"
+              className="block cursor-none"
             >
               <div
                 className="flex-shrink-0 border border-[#121212] rounded-2xl bg-[#121212] flex flex-col hover:border-[#2a2a2a] transition"
@@ -142,11 +143,11 @@ const Projects = () => {
 
         <div
           onClick={prev}
-          className="absolute left-0 top-0 h-full w-[120px] z-20 cursor-pointer"
+          className="absolute left-0 top-0 h-full w-[120px] z-20 cursor-none"
         />
         <div
           onClick={next}
-          className="absolute right-0 top-0 h-full w-[120px] z-20 cursor-pointer"
+          className="absolute right-0 top-0 h-full w-[120px] z-20 cursor-none"
         />
       </div>
 

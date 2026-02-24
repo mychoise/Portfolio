@@ -1,5 +1,4 @@
 import { Building2, Calendar, MapPin } from "lucide-react";
-import React from "react";
 import { education } from "./../../constants/constants";
 
 const Education = () => {

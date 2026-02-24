@@ -1,4 +1,3 @@
-import React from "react";
 import { contact, Languages, skills } from "../constants/constants.ts";
 
 const Sidebar = () => {

@@ -1,20 +1,24 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ArrowUpRight } from "lucide-react";
 
+type InteractiveElement = HTMLElement & {
+  _enter?: (e: Event) => void;
+  _leave?: (e: Event) => void;
+};
+
 const Cursor = () => {
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const arrowRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement | null>(null);
+  const arrowRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
     const cursor = cursorRef.current;
     const arrow = arrowRef.current;
-    const hero = document.querySelector(".hero-area");
+    const hero = document.querySelector<HTMLElement>(".hero-area");
 
     if (!hero || !cursor) return;
 
-    // Move cursor
-    const moveCursor = (e) => {
+    const moveCursor = (e: MouseEvent) => {
       gsap.to(cursor, {
         x: e.clientX - cursor.offsetWidth / 2,
         y: e.clientY - cursor.offsetHeight / 2,
@@ -23,14 +27,14 @@ const Cursor = () => {
       });
     };
 
-    // Show / Hide
     const showCursor = () =>
       gsap.to(cursor, { opacity: 1, scale: 1, duration: 0.2 });
+
     const hideCursor = () =>
       gsap.to(cursor, { opacity: 0, scale: 0.5, duration: 0.2 });
 
-    // Click effect
     const clickDown = () => gsap.to(cursor, { scale: 0.6, duration: 0.15 });
+
     const clickUp = () => gsap.to(cursor, { scale: 1, duration: 0.15 });
 
     hero.addEventListener("mousemove", moveCursor);
@@ -39,19 +43,23 @@ const Cursor = () => {
     hero.addEventListener("mousedown", clickDown);
     hero.addEventListener("mouseup", clickUp);
 
-    // Interactive elements
-    const interactive = hero.querySelectorAll(
+    const interactive = hero.querySelectorAll<InteractiveElement>(
       "a, button, [role='button'], input, textarea",
     );
 
     interactive.forEach((el) => {
       const enter = () => {
         gsap.to(cursor, { scale: 1.2, duration: 0.2 });
-        gsap.to(arrow, { opacity: 1, scale: 1, duration: 0.2 });
+        if (arrow) {
+          gsap.to(arrow, { opacity: 1, scale: 1, duration: 0.2 });
+        }
       };
+
       const leave = () => {
         gsap.to(cursor, { scale: 1, duration: 0.2 });
-        gsap.to(arrow, { opacity: 0, scale: 0, duration: 0.2 });
+        if (arrow) {
+          gsap.to(arrow, { opacity: 0, scale: 0, duration: 0.2 });
+        }
       };
 
       el.addEventListener("mouseenter", enter);
@@ -69,8 +77,8 @@ const Cursor = () => {
       hero.removeEventListener("mouseup", clickUp);
 
       interactive.forEach((el) => {
-        el.removeEventListener("mouseenter", el._enter);
-        el.removeEventListener("mouseleave", el._leave);
+        if (el._enter) el.removeEventListener("mouseenter", el._enter);
+        if (el._leave) el.removeEventListener("mouseleave", el._leave);
       });
     };
   }, []);
@@ -88,7 +96,6 @@ const Cursor = () => {
         opacity: 0,
       }}
     >
-      {/* Lucide Arrow */}
       <ArrowUpRight
         ref={arrowRef}
         size={12}

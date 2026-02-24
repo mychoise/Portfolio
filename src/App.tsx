@@ -1,4 +1,3 @@
-import React from "react";
 import Sidebar from "./main/Sidebar";
 import Hero from "./main/Hero";
 import Fotter from "./components/Fotter";
