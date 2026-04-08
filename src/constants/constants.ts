@@ -99,7 +99,7 @@ export const projects=[
     category:"Full Stack",
     link:"https://github.com/mychoise/Farming-Learning",
     color:"#BECD98",
-    image:"/small/.png"
+    image:"/small/5.png"
  },
   {
     name:"Chatting Application",
