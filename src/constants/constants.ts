@@ -92,6 +92,15 @@ export const Languages = [
 ]
 
 export const projects=[
+ {
+   name:"Farming Application",
+    role:"Full Stack",
+    date:"2026",
+    category:"Full Stack",
+    link:"https://github.com/mychoise/Farming-Learning",
+    color:"#BECD98",
+    image:"/small/.png"
+ },
   {
     name:"Chatting Application",
     role:"Full Stack",
